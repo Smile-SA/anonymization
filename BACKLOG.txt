@@ -1,0 +1,8 @@
+--- V0.1.1
+Readme improvement and backlog addition
+
+--- V0.1.1
+Readme and pypi config improvement
+
+--- v0.1.0
+Initial version
