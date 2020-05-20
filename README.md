@@ -66,11 +66,12 @@ python -m spacy download en
 | [PhoneNumberAnonymizer](anonymization/anonymizers/phoneNumberAnonymizers.py) | [47+](https://github.com/joke2k/faker/tree/master/faker/providers/phone_number) |
 | [msisdnAnonymizer](anonymization/anonymizers/fileAnonymizers.py)             | [47+](https://github.com/joke2k/faker/tree/master/faker/providers/phone_number) |
 
-### Spacy
+### Other
 
 | name                                                                         | lang                        |
 |------------------------------------------------------------------------------|-----------------------------|
 | [NamedEntitiesAnonymizer](anonymization/anonymizers/spacyAnonymizers.py)     | [7+](https://spacy.io/usage/models) |
+| [DictionaryAnonymizer](anonymization/anonymizers/dictionaryAnonymizers.py)   | -                           |
 
 ## Custom anonymizers
 
