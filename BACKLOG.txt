@@ -1,3 +1,6 @@
+--- v0.1.3
+Added pseudonimization
+
 --- V0.1.2
 Added dictionary anonymizer
 

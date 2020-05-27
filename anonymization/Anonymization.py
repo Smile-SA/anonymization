@@ -4,6 +4,8 @@ import re
 
 from faker import Factory
 
+from .lib.diff_match_patch import diff_match_patch
+
 class Anonymization:
     '''
     Faker wrapper providing utility functions, to map values with fakes equivalents.
@@ -82,3 +84,23 @@ class AnonymizerChain:
         Run all registered anonymizers on a list of texts
         '''
         return [self.anonymize(text) for text in texts]
+    
+    def pseudonymize(self, text: str) -> str:
+        '''
+        Run all registered anonymizes on a text and return also the diff patch
+        '''
+        dmp = diff_match_patch()
+        clean = self.anonymize(text)
+        diff = dmp.diff_main(clean, text)
+        patch = dmp.patch_make(clean, text, diff)
+
+        return clean, patch
+    
+    def revert(self, text: str, patch: str) -> str:
+        '''
+        Apply a patch on a cleaned text to revert the changes
+        '''
+        dmp = diff_match_patch()
+        text, _ = dmp.patch_apply(patch, text)
+
+        return text

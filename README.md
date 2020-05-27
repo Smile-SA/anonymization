@@ -36,9 +36,28 @@ python -m spacy download en
 
 >>> text = "Hi John,\nthanks for you for subscribing to Superprogram, feel free to ask me any question at secret.mail@Superprogram.com \n Superprogram the best program!"
 >>> anon = AnonymizerChain(Anonymization('en_US'))
->>> anon.add_anonymizers(EmailAnonymizer, NamedEntitiesAnonymizer('en'))
+>>> anon.add_anonymizers(EmailAnonymizer, NamedEntitiesAnonymizer('en_core_web_sm'))
 >>> anon.anonymize(text)
 'Hi Holly,\nthanks for you for subscribing to Ariel, feel free to ask me any question at shanestevenson@gmail.com \n Ariel the best program!'
+```
+
+Or make it reversible with pseudonymize:
+
+```python
+>>> from anonymization import Anonymization, AnonymizerChain, EmailAnonymizer, NamedEntitiesAnonymizer
+
+>>> text = "Hi John,\nthanks for you for subscribing to Superprogram, feel free to ask me any question at secret.mail@Superprogram.com \n Superprogram the best program!"
+>>> anon = AnonymizerChain(Anonymization('en_US'))
+>>> anon.add_anonymizers(EmailAnonymizer, NamedEntitiesAnonymizer('en_core_web_sm'))
+>>> clean_text, patch = anon.pseudonymize(text)
+
+>>> print(clean_text)
+'Christopher, \nthanks for you for subscribing to Audrey, feel free to ask me any question at colemanwesley@hotmail.com \n Audrey the best program!'
+
+revert_text = anon.revert(clean_text, patch)
+
+>>> print(text == revert_text)
+true
 ```
 
 ## Included anonymizers
