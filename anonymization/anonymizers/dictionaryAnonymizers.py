@@ -7,14 +7,14 @@ class _DictionaryAnonymizer():
     Delete all words that are not part of the dictionary (keep numbers and ponctuation)
     '''
 
-    def __init__(self, anonymization: Anonymization, dictionary: list[str]):
+    def __init__(self, anonymization: Anonymization, dictionary: list):
         self.anonymization = anonymization
         self.dictionary = dictionary
     
     def anonymize(self, text: str) -> str:
-        return "".join(w for w in re.findall(r"[\w]+|[^\s\w]", text) if w.lower() in self.dictionary or not w.isalpha())
+        return "".join(w for w in re.findall(r"[\w]+|[^\w]", text) if w.lower() in self.dictionary or not w.isalpha())
 
-def DictionaryAnonymizer(dictionary: list[str]) -> _DictionaryAnonymizer:
+def DictionaryAnonymizer(dictionary: list) -> _DictionaryAnonymizer:
     '''
     Context wrapper for _DictionaryAnonymizer, takes list of valid words.
     '''
