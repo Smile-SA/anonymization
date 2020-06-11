@@ -10,18 +10,6 @@ pip install anonymization
 
 ## Example
 
-### Replace a french phone number with a fake one
-
-```python
->>> from anonymization import Anonymization, PhoneNumberAnonymizer
->>>
->>> text = "C'est bien le 0611223344 ton numéro ?"
->>> anon = Anonymization('fr_FR')
->>> phoneAnonymizer = PhoneNumberAnonymizer(anon)
->>> phoneAnonymizer.anonymize(text)
-"C'est bien le 0144939332 ton numéro ?"
-```
-
 ### Replace emails and named entities in english
 
 This example use NamedEntitiesAnonymizer which require [spacy](https://spacy.io) and a spacy model.
@@ -36,7 +24,7 @@ python -m spacy download en
 
 >>> text = "Hi John,\nthanks for you for subscribing to Superprogram, feel free to ask me any question at secret.mail@Superprogram.com \n Superprogram the best program!"
 >>> anon = AnonymizerChain(Anonymization('en_US'))
->>> anon.add_anonymizers(EmailAnonymizer, NamedEntitiesAnonymizer('en_core_web_sm'))
+>>> anon.add_anonymizers(EmailAnonymizer, NamedEntitiesAnonymizer('en_core_web_lg'))
 >>> anon.anonymize(text)
 'Hi Holly,\nthanks for you for subscribing to Ariel, feel free to ask me any question at shanestevenson@gmail.com \n Ariel the best program!'
 ```
@@ -48,7 +36,7 @@ Or make it reversible with pseudonymize:
 
 >>> text = "Hi John,\nthanks for you for subscribing to Superprogram, feel free to ask me any question at secret.mail@Superprogram.com \n Superprogram the best program!"
 >>> anon = AnonymizerChain(Anonymization('en_US'))
->>> anon.add_anonymizers(EmailAnonymizer, NamedEntitiesAnonymizer('en_core_web_sm'))
+>>> anon.add_anonymizers(EmailAnonymizer, NamedEntitiesAnonymizer('en_core_web_lg'))
 >>> clean_text, patch = anon.pseudonymize(text)
 
 >>> print(clean_text)
@@ -59,6 +47,24 @@ revert_text = anon.revert(clean_text, patch)
 >>> print(text == revert_text)
 true
 ```
+
+### Replace a french phone number with a fake one
+
+Our solution supports many languages along with their specific information formats.
+
+For example, we can generate a french phone number:
+
+```python
+>>> from anonymization import Anonymization, PhoneNumberAnonymizer
+>>>
+>>> text = "C'est bien le 0611223344 ton numéro ?"
+>>> anon = Anonymization('fr_FR')
+>>> phoneAnonymizer = PhoneNumberAnonymizer(anon)
+>>> phoneAnonymizer.anonymize(text)
+"C'est bien le 0144939332 ton numéro ?"
+```
+
+More examples in [/examples](/examples)
 
 ## Included anonymizers
 
