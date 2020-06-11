@@ -85,6 +85,17 @@ class AnonymizerChain:
         '''
         return [self.anonymize(text) for text in texts]
     
+    def evaluate(self, text: str) -> str:
+        '''
+        Evaluate all registered anonymizers on a text
+        '''
+        result = []
+
+        for anonymizer in self._anonymizers:
+            result += anonymizer.evaluate(text)
+
+        return result
+
     def pseudonymize(self, text: str) -> str:
         '''
         Run all registered anonymizes on a text and return also the diff patch

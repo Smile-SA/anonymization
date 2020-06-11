@@ -1,3 +1,5 @@
+from types import SimpleNamespace
+
 import spacy
 
 from ..Anonymization import Anonymization
@@ -23,6 +25,13 @@ class _NamedEntitiesAnonymizer():
         ents = [ent.text.strip() for ent in doc.ents if not ent.text.isspace()]
 
         return self.anonymization.replace_all(text, ents, 'first_name')
+    
+    def evaluate(self, text: str) -> str:
+        doc = self.processor(text)
+        # remove whitespace entities and trim the entities
+        ents = [SimpleNamespace(start=ent.start_char, end=ent.end_char, entity_type=ent.label_, score=1) for ent in doc.ents if not ent.text.isspace()]
+
+        return ents
 
 def NamedEntitiesAnonymizer(model: str) -> _NamedEntitiesAnonymizer:
     '''

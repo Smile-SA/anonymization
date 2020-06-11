@@ -1,3 +1,6 @@
+import re
+from types import SimpleNamespace
+
 from ..Anonymization import Anonymization
 
 class EmailAnonymizer():
@@ -10,6 +13,12 @@ class EmailAnonymizer():
     
     def anonymize(self, text: str) -> str:
         return self.anonymization.regex_anonymizer(text, r'[\w\.-]+@[\w\.-]+\.\w+', 'email')
+    
+    def evaluate(self, text: str) -> str:
+        matchs = re.finditer(r'[\w\.-]+@[\w\.-]+\.\w+', text)
+        ents = [SimpleNamespace(start=m.start(), end=m.end(), entity_type="EMAIL_ADDRESS", score=1) for m in matchs]
+
+        return ents
 
 class UriAnonymizer():
     '''

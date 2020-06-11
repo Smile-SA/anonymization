@@ -117,6 +117,17 @@ class CustomAnonymizer():
 
 You may also add new faker provider with the helper `Anonymization.add_provider(FakerProvider)` or access the faker instance directly `Anonymization.faker`.
 
+## Benchmark
+
+This module is benchmarked on [synth_dataset](benchmark/data/synth_dataset.txt) from [presidio-research](https://github.com/microsoft/presidio-research) and return results similar to Microsoft's solution.
+
+You can run the benchmark using docker:
+
+```bash
+docker build . -f ./benchmark/dockerfile -t anonbench
+docker run -it --rm --name anonbench anonbench
+```
+
 ## License
 
 MIT

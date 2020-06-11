@@ -1,0 +1,21 @@
+FROM python:3.7
+
+WORKDIR /src
+RUN git clone https://github.com/microsoft/presidio-research
+
+WORKDIR /src/presidio-research
+RUN pip install -r requirements.txt
+RUN python -m spacy download en_core_web_lg
+RUN python -m spacy download en_core_web_sm
+RUN pip install -e .
+
+ADD anonymization /src/anonymization/anonymization
+ADD setup.py /src/anonymization/setup.py
+ADD README.md /src/anonymization/README.md
+RUN pip install -e /src/anonymization
+
+WORKDIR /src
+ADD benchmark/data/synth_dataset.txt /src/data/synth_dataset.txt
+ADD benchmark/AnonymizationEvaluator.py /src/AnonymizationEvaluator.py
+
+CMD ["python", "AnonymizationEvaluator.py"]

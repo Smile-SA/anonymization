@@ -1,4 +1,6 @@
 import re
+from types import SimpleNamespace
+
 import faker
 
 from ..Anonymization import Anonymization
@@ -25,6 +27,23 @@ class PhoneNumberAnonymizer():
             text = self.anonymization.regex_anonymizer(text, regex, 'phone_number')
 
         return text
+    
+    def evaluate(self, text: str) -> str:
+        formats = getattr(
+            faker.providers.phone_number, 
+            self.anonymization.locale
+            ).Provider.formats
+
+        ents = []
+
+        for phone_nb_format in formats:
+            safeFormat = re.escape(phone_nb_format.replace('#', '_'))
+            regex = re.compile('\\b' + safeFormat.replace('_', '\d') + '\\b')
+
+            matchs = re.finditer(regex, text)
+            ents += [SimpleNamespace(start=m.start(), end=m.end(), entity_type="PHONE_NUMBER", score=1) for m in matchs]
+
+        return ents
 
 class msisdnAnonymizer():
     '''
