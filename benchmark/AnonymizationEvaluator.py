@@ -1,9 +1,10 @@
-from anonymization import Anonymization, AnonymizerChain, NamedEntitiesAnonymizer, EmailAnonymizer, PhoneNumberAnonymizer
+from anonymization import Anonymization, AnonymizerChain, NamedEntitiesAnonymizer, EmailAnonymizer, PhoneNumberAnonymizer, Ipv4Anonymizer, CreditCardAnonymizer, IbanAnonymizer
 from presidio_evaluator.presidio_analyzer import PresidioAnalyzer, ModelEvaluator
 from presidio_evaluator.data_generator import read_synth_dataset
 
 anon = AnonymizerChain(Anonymization('en_US'))
-anon.add_anonymizers(EmailAnonymizer, PhoneNumberAnonymizer, NamedEntitiesAnonymizer('en_core_web_sm'))
+anon.add_anonymizers(EmailAnonymizer, Ipv4Anonymizer, IbanAnonymizer,
+    CreditCardAnonymizer, PhoneNumberAnonymizer, NamedEntitiesAnonymizer('en_core_web_lg'))
 
 class AnonymizationAnalyzerEngine:
     def analyze(self, text, language, all_fields, entities=None, correlation_id=None,
