@@ -91,6 +91,12 @@ More examples in [/examples](/examples)
 | [PhoneNumberAnonymizer](anonymization/anonymizers/phoneNumberAnonymizers.py) | [47+](https://github.com/joke2k/faker/tree/master/faker/providers/phone_number) |
 | [msisdnAnonymizer](anonymization/anonymizers/fileAnonymizers.py)             | [47+](https://github.com/joke2k/faker/tree/master/faker/providers/phone_number) |
 
+## Date
+
+| name                                                                         | lang                        |
+|------------------------------------------------------------------------------|-----------------------------|
+| [DateAnonymizer](anonymization/anonymizers/dateAnonymizers.py)               | -                           |
+
 ### Other
 
 | name                                                                         | lang                        |
