@@ -72,37 +72,37 @@ More examples in [/examples](/examples)
 
 | name                                                                         | lang                        |
 |------------------------------------------------------------------------------|-----------------------------|
-| [FilePathAnonymizer](anonymization/anonymizers/fileAnonymizers.py)           | -                           |
+| [FilePathAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/fileAnonymizers.py)           | -                           |
 
 ### Internet
 
 | name                                                                         | lang                        |
 |------------------------------------------------------------------------------|-----------------------------|
-| [EmailAnonymizer](anonymization/anonymizers/internetAnonymizers.py)          | -                           |
-| [UriAnonymizer](anonymization/anonymizers/internetAnonymizers.py)            | -                           |
-| [MacAddressAnonymizer](anonymization/anonymizers/internetAnonymizers.py)     | -                           |
-| [Ipv4Anonymizer](anonymization/anonymizers/internetAnonymizers.py)           | -                           |
-| [Ipv6Anonymizer](anonymization/anonymizers/internetAnonymizers.py)           | -                           |
+| [EmailAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/internetAnonymizers.py)          | -                           |
+| [UriAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/internetAnonymizers.py)            | -                           |
+| [MacAddressAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/internetAnonymizers.py)     | -                           |
+| [Ipv4Anonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/internetAnonymizers.py)           | -                           |
+| [Ipv6Anonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/internetAnonymizers.py)           | -                           |
 
 ### Phone numbers
 
 | name                                                                         | lang                        |
 |------------------------------------------------------------------------------|-----------------------------|
-| [PhoneNumberAnonymizer](anonymization/anonymizers/phoneNumberAnonymizers.py) | [47+](https://github.com/joke2k/faker/tree/master/faker/providers/phone_number) |
-| [msisdnAnonymizer](anonymization/anonymizers/fileAnonymizers.py)             | [47+](https://github.com/joke2k/faker/tree/master/faker/providers/phone_number) |
+| [PhoneNumberAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/phoneNumberAnonymizers.py) | [47+](https://github.com/joke2k/faker/tree/master/faker/providers/phone_number) |
+| [msisdnAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/fileAnonymizers.py)             | [47+](https://github.com/joke2k/faker/tree/master/faker/providers/phone_number) |
 
 ## Date
 
 | name                                                                         | lang                        |
 |------------------------------------------------------------------------------|-----------------------------|
-| [DateAnonymizer](anonymization/anonymizers/dateAnonymizers.py)               | -                           |
+| [DateAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/dateAnonymizers.py)               | -                           |
 
 ### Other
 
 | name                                                                         | lang                        |
 |------------------------------------------------------------------------------|-----------------------------|
-| [NamedEntitiesAnonymizer](anonymization/anonymizers/spacyAnonymizers.py)     | [7+](https://spacy.io/usage/models) |
-| [DictionaryAnonymizer](anonymization/anonymizers/dictionaryAnonymizers.py)   | -                           |
+| [NamedEntitiesAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/spacyAnonymizers.py)     | [7+](https://spacy.io/usage/models) |
+| [DictionaryAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/dictionaryAnonymizers.py)   | -                           |
 
 ## Custom anonymizers
 
@@ -125,7 +125,7 @@ You may also add new faker provider with the helper `Anonymization.add_provider(
 
 ## Benchmark
 
-This module is benchmarked on [synth_dataset](benchmark/data/synth_dataset.txt) from [presidio-research](https://github.com/microsoft/presidio-research) and return results similar to Microsoft's solution.
+This module is benchmarked on [synth_dataset](benchmark/data/synth_dataset.txt) from [presidio-research](https://github.com/microsoft/presidio-research) and returns accuracy result(**0.79**) better than Microsoft's solution(**0.75**)
 
 You can run the benchmark using docker:
 
