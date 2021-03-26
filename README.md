@@ -16,7 +16,7 @@ This example use NamedEntitiesAnonymizer which require [spacy](https://spacy.io)
 
 ```bash
 pip install spacy
-python -m spacy download en
+python -m spacy download en_core_web_lg
 ```
 
 ```python
@@ -64,7 +64,7 @@ For example, we can generate a french phone number:
 "C'est bien le 0144939332 ton numéro ?"
 ```
 
-More examples in [/examples](/examples)
+More examples in [/examples](https://github.com/alterway/anonymization/tree/master/examples)
 
 ## Included anonymizers
 
