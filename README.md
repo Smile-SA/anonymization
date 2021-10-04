@@ -103,6 +103,8 @@ More examples in [/examples](https://github.com/alterway/anonymization/tree/mast
 |------------------------------------------------------------------------------|-----------------------------|
 | [NamedEntitiesAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/spacyAnonymizers.py)     | [7+](https://spacy.io/usage/models) |
 | [DictionaryAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/dictionaryAnonymizers.py)   | -                           |
+| [SignatureAnonymizer](https://github.com/alterway/anonymization/blob/master/anonymization/anonymizers/signatureAnonymizers.py)     | [7+](https://spacy.io/usage/models) |
+-
 
 ## Custom anonymizers
 
